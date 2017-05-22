@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+
+    <title value="Home">Home</title>
+</head>
+<body>
+<table width="500">
+    <thead>
+    <tr style="background: #222; color: white;">
+        <th width="9%">번호</th>
+        <th>제목</th>
+        <th width="15%">글쓴이</th>
+        <th width="19%">날짜</th>
+        <th width="9%">조회</th>
+    </tr>
+    </thead>
+    <tbody>
+    <div th:each="post : ${posts}" class="postList">
+        <tr>
+            <td class="homeId">
+                <p th:text="${post.id}">null</p>
+            </td>
+            <td class="homeSubject">
+                <a th:href="@{'/postview/' + ${post.id}}">
+                    <p th:text="${post.subject}" class="subjectBtn">null</p>
+                </a>
+            </td>
+            <td class="homeNick">
+                <p th:text="${post.nick}">null</p>
+            </td>
+            <td class="homeDate">
+                <p th:text="${post.date}">null</p>
+            </td>
+            <td class="homeHit">
+                <p th:text="${post.hit}">null</p>
+            </td>
+        </tr>
+    </div>
+    </tbody>
+</table>
+<a th:href="@{'/write'}">
+    <input type="button" value="글쓰기" class="writeBtn"/>
+</a>
+</body>
+</html>

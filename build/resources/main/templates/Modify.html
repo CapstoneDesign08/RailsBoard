@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+
+    <title>글수정</title>
+</head>
+<body>
+<form method="POST" th:action="@{/write}">
+    <table width="500">
+        <tr>
+            <div>
+                <input type="text" name="nick" size="40" placeholder="닉네임을 입력하세요." th:value="${post.nick}"/>
+            </div>
+        </tr>
+        <tr>
+            <div>
+                <input type="text" name="subject" size="65" placeholder="제목을 입력하세요." th:value="${post.subject}"/>
+            </div>
+        </tr>
+        <tr>
+            <div>
+                <input type="text" name="content" size="65" style="height: 200px" placeholder="내용을 입력하세요." th:value="${post.content}"/>
+            </div>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>
+                <a th:href="@{'/postview/' + ${post.id}}">
+                    <input type="button" value="뒤로" class="back"/>
+                </a>
+            </td>
+            <td>
+                <a>
+                    <input type="hidden" name="id" th:value="${post.id}"/>
+                    <input type="hidden" name="date" th:value="${post.date}"/>
+                    <input type="hidden" name="hit" th:value="${post.hit}"/>
+                    <input type="submit" value="작성" class="submit"/>
+                </a>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
